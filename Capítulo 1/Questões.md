@@ -36,9 +36,9 @@
 
 * F- Correto
 
-* G- TODO
+* G- Incorreto, não é possível realizar uma operação dentro do mov(nesse caso uma operação unária)
 
-* H- Correto
+* H- Correto, mas procurar utilizar os registradores certos, nesse caso o eax para movimentar números
 
 # Questão 4
 
