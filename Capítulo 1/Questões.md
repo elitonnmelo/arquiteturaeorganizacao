@@ -3,8 +3,8 @@
 * A- Correta
 * B- Incorreta, é necessário começar com letras
 * C- Correta, mas usar símbolos não é recomendado
-* D- Incorreta, é necessário começar por uma letra
-* E- Incorreta, mesmo caso da passada
+* D- Correto, mas não é recomendado utilizar símbolos no começo
+* E- Correto, mas não é recomendado utilizar símbolos
 * F- Incorreta, o caractere '.' não pode ser usado como símbolo especial
 
 # Questão 2
@@ -13,8 +13,12 @@
 
 * B- grade byte 'B'
 
-* C- <br> x byte 'P'<br>
-     y byte 'Q'
+* C-  
+
+```asm
+x byte 'P'
+y byte 'Q'
+```
 
 * D- amount sdword ?
 
@@ -44,8 +48,12 @@
 
 * A- mov i, 1
 
-* B- <br>mov eax, x<br>
-    mov y, eax
+* B-
+
+```asm
+mov eax, x
+mov y, eax
+```
 
 * C-<br> mov c, 2
    <br>mov eax, c
