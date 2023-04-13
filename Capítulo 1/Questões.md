@@ -47,11 +47,14 @@
 * B- <br>mov eax, x<br>
     mov y, eax
 
-* C-<br> mov c, 2
-   <br>mov eax, c
-   <br>mov b, eax
-   <br>mov eax, b
-   <br>mov a, eax
+* C 
+```asm
+mov c, 2
+mov eax, c
+mov b, eax
+mov eax, b
+mov a, eax
+```
 
 * D-<br> mov y, 1
    <br>mov eax, y
