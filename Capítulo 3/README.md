@@ -1,3 +1,3 @@
-# Capítulo 2
+# Capítulo 3
 
 Questões referentes ao Capítulo 3 do livro.
