@@ -24,6 +24,8 @@ in2fmt  Byte "%d", 0
 
 number1  sdword ?
 number2  sdword ?
+volts    sdword ?
+watts    sdword ?
         .code
 
 main    proc
@@ -34,11 +36,12 @@ main    proc
         INVOKE scanf, ADDR in2fmt, ADDR number2
         mov eax, number1
         imul number2
-        mov ebx, eax
-        INVOKE printf, ADDR msg3fmt, ADDR msg3, ebx
+        mov volts, eax
+        INVOKE printf, ADDR msg3fmt, ADDR msg3, volts
         mov eax, number1
-        imul ebx
-        INVOKE printf, ADDR msg4fmt, ADDR msg4, eax
+        imul volts
+        mov watts, eax
+        INVOKE printf, ADDR msg4fmt, ADDR msg4, watts
 
         ret
 main    endp
