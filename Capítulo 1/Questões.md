@@ -3,8 +3,8 @@
 * A- Correta
 * B- Incorreta, é necessário começar com letras
 * C- Correta, mas usar símbolos não é recomendado
-* D- Incorreta, é necessário começar por uma letra
-* E- Incorreta, mesmo caso da passada
+* D- Correto, mas não é recomendado utilizar símbolos no começo
+* E- Correto, mas não é recomendado utilizar símbolos
 * F- Incorreta, o caractere '.' não pode ser usado como símbolo especial
 
 # Questão 2
@@ -13,8 +13,12 @@
 
 * B- grade byte 'B'
 
-* C- <br> x byte 'P'<br>
-     y byte 'Q'
+* C-  
+
+```asm
+x byte 'P'
+y byte 'Q'
+```
 
 * D- amount sdword ?
 
@@ -44,48 +48,80 @@
 
 * A- mov i, 1
 
-* B- <br>mov eax, x<br>
-    mov y, eax
+* B-
 
-* C-<br> mov c, 2
-   <br>mov eax, c
-   <br>mov b, eax
-   <br>mov eax, b
-   <br>mov a, eax
+```asm
+mov eax, x
+mov y, eax
+```
 
-* D-<br> mov y, 1
-   <br>mov eax, y
-   <br>mov x, eax
+* C-
 
-* E- <br>mov a, 1 
-   <br>mov b, 2
-   <br>mov eax, a
-   <br>mov c, eax
-   <br>mov eax, b
-   <br>mov a, eax
-   <br>mov eax, c
-   <br>mov b, eax
+```asm
+mov c, 2
+mov eax, c
+mov b, eax
+mov eax, b
+mov a, eax
+```
+
+* D-
+
+```asm
+mov y, 1
+mov eax, y
+mov x, eax
+```
+
+
+* E-
+
+```asm
+mov a, 1 
+mov b, 2
+mov eax, a
+mov c, eax
+mov eax, b
+mov a, eax
+mov eax, c
+mov b, eax
+```
 
 # Questão 5
 
 * A- mov a, 'B'
 
-* B-<br> mov al, c
-   <br>mov b, al
+* B-
 
-* C-<br> mov d, 'E'
-   <br>mov al, d
-   <br>mov e, al
+```asm
+mov al, c
+mov b, al
+```
 
-* D- <br>mov d, 'z'
-   <br>mov al, d
-   <br>mov a, al
-   <br>mov al, a
-   <br>mov b, al
+* C-
 
-* E-<br> mov a, '2'
-   <br>mov b, '?'
-   <br>mov al, b
-   <br>mov a, al
+```asm
+ mov d, 'E'
+mov al, d
+mov e, al
+```
 
-   
+* D-
+
+```asm
+mov d, 'z'
+mov al, d
+mov a, al
+mov al, a
+mov b, al
+```
+
+* E-
+
+
+```asm
+mov a, '2'
+mov b, '?'
+mov al, b
+mov a, al
+```
