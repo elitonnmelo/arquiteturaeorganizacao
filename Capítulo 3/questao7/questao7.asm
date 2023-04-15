@@ -20,17 +20,16 @@ celcius sdword ?
 
 main    proc
 
-        ; celsius = (F −32)/9 * 5      
+        ; celsius = (F −32)/9 * 5  ou  celsius = ((F −32)*5)/9
         INVOKE printf, ADDR msg1fmt, ADDR msg1
         INVOKE scanf, ADDR in1fmt, ADDR number
-        moc ebx, 32
-        sub number, eax;(fahrenheit - 32)
-        mov ecx, 9
         mov eax, number
-        cdq
-        idiv ecx;(fahrenheit - 32) / 9
+        sub eax, 32;(fahrenheit - 32)
         mov ebx, 5
-        imul ebx
+        imul ebx ;(fahrenheit-32)*5
+        cdq
+        mov ecx, 9
+        idiv ecx;((fahrenheit - 32) * 5) / 9
         mov celcius, eax
         INVOKE printf, ADDR msg2fmt, ADDR msg2, celcius
 

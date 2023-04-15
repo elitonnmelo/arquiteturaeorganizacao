@@ -22,8 +22,8 @@ msg4    Byte "The number of watts is: ", 0
 in1fmt  Byte "%d", 0
 in2fmt  Byte "%d", 0
 
-number1  sdword ?
-number2  sdword ?
+amperes  sdword ?
+ohms  sdword ?
 volts    sdword ?
 watts    sdword ?
         .code
@@ -31,14 +31,14 @@ watts    sdword ?
 main    proc
                
         INVOKE printf, ADDR msg1fmt, ADDR msg1
-        INVOKE scanf, ADDR in1fmt, ADDR number1
+        INVOKE scanf, ADDR in1fmt, ADDR amperes
         INVOKE printf, ADDR msg2fmt, ADDR msg2
-        INVOKE scanf, ADDR in2fmt, ADDR number2
-        mov eax, number1
-        imul number2
+        INVOKE scanf, ADDR in2fmt, ADDR ohms
+        mov eax, amperes
+        imul ohms
         mov volts, eax
         INVOKE printf, ADDR msg3fmt, ADDR msg3, volts
-        mov eax, number1
+        mov eax, amperes
         imul volts
         mov watts, eax
         INVOKE printf, ADDR msg4fmt, ADDR msg4, watts
