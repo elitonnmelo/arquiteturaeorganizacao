@@ -7,7 +7,7 @@
 * C- Incorreto, não podemos fazer operações com dois dados na memória
 * D- Incorreto, idiv só pode ser feito com memória ou registrador
 * E- Incorreto, não é possível subtrair e guardar o resultado no imediato, é necessário inverter a ordem para fazer essa operação
-* F- ToDo
+* F- Correto, esse caso seria como elevar o valor de eax ao quadrado
 
 ## Questão 2
 
@@ -103,13 +103,11 @@ mov r, eax
 mov eax, i
 sub eax, j
 imul k
-mov ebx, eax
-mov eax, n
-imul ebx
+imul n
 mov m, eax
 ```
 
-* F- ;Revisar
+* F- 
 
 ```asm
 mov eax, c
