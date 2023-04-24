@@ -1,13 +1,17 @@
-# Questão 1
+> Correção: 2,0
 
+# Questão 1
+> Correção: 0,4
 * A- Correta
 * B- Incorreta, é necessário começar com letras
 * C- Correta, mas usar símbolos não é recomendado
+> Correção: a partir de agora vamos considerar incorreto.
 * D- Correto, mas não é recomendado utilizar símbolos no começo
 * E- Correto, mas não é recomendado utilizar símbolos
 * F- Incorreta, o caractere '.' não pode ser usado como símbolo especial
 
 # Questão 2
+> Correção: 0,4. Mas vamos colocar, qualquer trecho de código, por menor que seja, entre crases. 
 
 * A- initial byte ? 
 
@@ -27,6 +31,7 @@ y byte 'Q'
 * F- number sdword -396
 
 # Questão 3
+> Correção: 0,4
 
 * A- Incorreto, o correto é mov
 
@@ -45,6 +50,7 @@ y byte 'Q'
 * H- Correto, mas procurar utilizar os registradores certos, nesse caso o eax para movimentar números
 
 # Questão 4
+> Correção: 0,4. Mas vamos colocar, qualquer trecho de código, por menor que seja, entre crases.
 
 * A- mov i, 1
 
@@ -88,6 +94,7 @@ mov b, eax
 ```
 
 # Questão 5
+> Correção: 0,4. Mas vamos colocar, qualquer trecho de código, por menor que seja, entre crases.
 
 * A- mov a, 'B'
 
@@ -101,7 +108,7 @@ mov b, al
 * C-
 
 ```asm
- mov d, 'E'
+mov d, 'E'
 mov al, d
 mov e, al
 ```

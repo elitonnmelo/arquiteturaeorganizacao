@@ -1,7 +1,7 @@
 # Questões do Terceiro Capítulo
 
 ## Questão 1
-
+> Correção: 0,5
 * A- Incorreto, inc é uma operação unária, então só tem um operando
 * B- Correto
 * C- Incorreto, não podemos fazer operações com dois dados na memória
@@ -10,7 +10,7 @@
 * F- Correto, esse caso seria como elevar o valor de eax ao quadrado
 
 ## Questão 2
-
+> Correção: 0,5
 * A-
 
 ```asm
@@ -39,7 +39,7 @@ mov answer, eax
 ```
 
 * D-
-
+> Correção: poderia ter feito com sub.
 ```asm
 mov eax, number
 neg eax
@@ -48,7 +48,7 @@ mov difference, eax
 ```
 
 ## Questão 3
-
+>  Correção: 0,5
 * A-
 
 ```asm
@@ -123,7 +123,7 @@ mov q, eax
 ```
 
 ## Questão 4
-
+> Correção: 0,5
 * A-
 
 ```asm
