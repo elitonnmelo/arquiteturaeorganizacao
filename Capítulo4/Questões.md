@@ -1,13 +1,19 @@
-# Questão 1: Indicate whether the following statements are syntactically correct or incorrect in MASM. If incorrect, indicate what is wrong with the statement:
- * A: 
+# Resolução das questões
+
+## Questão 1: Indicate whether the following statements are syntactically correct or incorrect in MASM. If incorrect, indicate what is wrong with the statement
+
+* A:
+
     ```asm
     .if (number = 0)
     add number,2 
     .endif
     ```
+
     Rseposta: Incorreto. O correto seria == ao invés de = na comparação feita dentro do .if
 
 * B:
+
     ```asm
     .if count >= 0 then 
     sub count,2 
@@ -15,35 +21,66 @@
     add count,3 
     .endif
     ```
+
     Resposta: Correto.
 
 * C:
+
     ```asm
     .if x-1 
     dec x 
     .endif
     ```
+
     Resposta: Incorreto. O codigo esta certo mas não esta fazendo o que esta sendo pedido, pois não é possivel fazer uma operação dentro de diretivas, ele tratará como se fosse o endereço de x - 1.
 
-
 * D:
+
     ```asm
+
     if01:       cmp x,y 
                 jle endif01
                 then01: inc x 
     endif01:    nop 
     ```
+
     Resposta: Incorreto. A função cmp não pode realizar uma compararação fazendo dois acessos a memória, para que o codigo ficasse correto seria preciso mover uma das variaveis para um registrador.
 
+## Questão 2: Using MASM directives, write an assembly language code segment to implement the following
 
-# QUETSÃO 3: Convert the following C selection structures to the corresponding assemblylanguage code segments. Do not use MASM directives, but rather only compares, jumps, and appropriate labels (hint: Problem B, use De Morgan’s rules):
+Resposta:
+
+```asm
+    .if a > b
+        dec a;
+    .else
+        .if b >=c
+            sub b,2
+        .else
+            .if c > d
+                add c,d
+            .else
+                mov eax, d
+                cdq
+                mov ebx, 2
+                idiv ebx
+                mov d, eax
+            .endif 
+        .endif
+    .endif
+```
+
+## QUETSÃO 3: Convert the following C selection structures to the corresponding assemblylanguage code segments. Do not use MASM directives, but rather only compares, jumps, and appropriate labels (hint: Problem B, use De Morgan’s rules)
 
 * A
-    ```asm 
+
+    ```asm
     f (w == 1 && x == 2)
         y-;
     ```
+
     Resposta:
+
     ```asm
     if01:       cmp w,1 
                 jne endif01
@@ -54,11 +91,14 @@
     ```
 
 * B
+
     ```asm
     if (!(num > 0 && num <= 3)) 
         count=count-2; 
     ```
-    Resposta: 
+
+    Resposta:
+
     ```asm
     if01:       cmp num, 0
                 jg endif01
@@ -67,12 +107,16 @@
                 sub count,2
     endif01:    nop   
     ```
+
 * C
+
     ```asm
     if ( ( w == 1 || x == 2 ) && y == 3) 
         z++; 
     ```
+
     Resposta:
+
     ```asm
     if01:           cmp w, 1
                     je and01
@@ -83,12 +127,16 @@
     then01:         inc z
     endif01:        nop
     ```
+
 * D
+
     ```asm
     if (a == 1 || b == 2 && c > 3 || d <= 4) 
         e--;
     ```
-    Resposta: 
+
+    Resposta:
+
     ```asm
     if01:       cmp a, 1
                 je and01
