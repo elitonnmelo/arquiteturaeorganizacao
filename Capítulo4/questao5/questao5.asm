@@ -7,11 +7,13 @@ scanf   PROTO arg2:Ptr Byte, inputlist:VARARG
 
         .data
 number  sdword ?
-count   sdword ?
+count   sdword ? 
 
         .code
 
 main    proc
+
+    mov count, 0
     case00:         cmp number, 0
                     je case01
     case01:         cmp number, 1
