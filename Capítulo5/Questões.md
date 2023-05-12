@@ -27,7 +27,7 @@
     .until i>10
     ```
     Resposta: Correto.
-*D 
+* D 
     ```asm
     mov edx,3
     .repeat
