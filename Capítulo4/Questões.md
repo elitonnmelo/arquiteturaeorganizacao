@@ -149,3 +149,30 @@ Resposta:
     then01:     dec e
     endif01:    nop
     ```
+
+## Questão 4: Given the example of the if-then-else-if structure in Problem 2 above,re-implement it using a nested if-then-if structure
+
+* A: Use MASM directives.
+
+    ```masm
+
+    ```
+
+* B: Do not use MASM directives, but rather compares, jumps, and appropriate
+labels.
+
+    ```asm
+
+    ```
+
+## Questão 5:  Implement the following C switch statement, which does not have a default statement, using compares, jumps, and appropriate labels. If number does not contain a 0 through 3, then the value of count should not change
+
+```asm
+    Resposta: Código à parte
+```
+
+## Questão 6: Implement the program in Sect. 4.8 in assembly language without using high-level directives with only compares, jumps, and appropriate labels
+
+```asm
+    Resposta: Código à parte
+```
