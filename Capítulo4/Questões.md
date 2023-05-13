@@ -155,14 +155,50 @@ Resposta:
 * A: Use MASM directives.
 
     ```masm
-
+        .if a > b
+        dec a
+        .endif
+        if b >=c
+        sub b,2
+        .endif
+        if c > d
+        add c,d
+        .endif
+        mov eax, d
+        cdq
+        mov ebx, 2
+        idiv ebx
+        mov d, eax
     ```
 
 * B: Do not use MASM directives, but rather compares, jumps, and appropriate
 labels.
 
     ```asm
-
+                mov eax, a
+                cmp eax, b
+    if01:       jge endif01
+                dec a
+                jmp final
+    endif01:    nop
+                mov eax, b
+    if02:       cmp b, x
+                jl endif02
+                sub b,2
+                jmp final
+    endif02:    nop
+                mov eax, c
+    if03:       cmp eax, d
+                jle endif03
+                add c,d
+                jmp final
+    endif03:    nop
+    elseif03:   mov eax, d ;else só no nome
+                cdq        ;no caso é o then
+                mov ebx, 2
+                idiv ebx
+                mov d, eax
+    final:      nop                
     ```
 
 ## Questão 5:  Implement the following C switch statement, which does not have a default statement, using compares, jumps, and appropriate labels. If number does not contain a 0 through 3, then the value of count should not change
