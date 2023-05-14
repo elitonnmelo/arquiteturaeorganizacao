@@ -62,7 +62,20 @@
 ## Questão 2: Implement the last code segment in Sect. 5.1 without using directives and using only conditional and unconditional jumps
 
 ```asm
-
+        mov ans, 0
+        cmp x, 0
+        je endif
+        mov ecx, 1
+while:  cmp ecx, y
+        jg endw
+        mov eax,ans 
+        add eax,x
+        mov ans,eax
+        inc ecx
+        jmp while
+endw:   nop
+        mov i, ecx
+endif:  nop
 ```
 
 ---
@@ -116,7 +129,19 @@
 ## Questão 4:  Implement the .repeat and .until directive at the end of Sect. 5.2 using only compare and jump instructions, along with the appropriate label names
 
 ```asm
-
+                mov ans, 0
+                .if y! 0 
+                mov ecx,1
+    repeat:     nop
+                mov eax, ans
+                add eax, x
+                mov ans, eax
+                inc ecx
+                cmp ecx, y
+                jle repeat
+    until:      nop
+                mov i, ecx
+                .endif 
 ```
 
 ---
@@ -134,15 +159,21 @@
 ## Questão 6:  Implement the following C segment using the .repeat - .untilcxz directives. What if the value of n is 0 or negative? Does your code segment still work properly? How can this problem be rectified?
 
 ```c
-    sum 0;
-    for (i 1; i< n; i++)
-    sum sum + i;
+    sum = 0;
+    for (i  = 1; i < n; i++)
+        sum = sum + i;
 ```
 
 Resposta:
 
 ```asm
-
+    .if n > 0 ;garante que não irá executar 
+    mov sum, 0 ;o laço se n <= 0
+    mov ecx, n
+    .repeat
+    add sum, ecx
+    .untilcxz
+    .endif
 ```
 
 ---
@@ -150,11 +181,11 @@ Resposta:
 ## Questão 7: Implement the following do-while loop first using the .repeat - .until directives and then using only compares, and conditional and unconditional jumps
 
 ```c
-    i 10;
-    sum 0;
+    i = 10;
+    sum = 0;
     do {
-    sum sum+i;
-    i i-2;
+    sum = sum+i;
+    i = i-2;
     } while i>0;
 ```
 
@@ -171,7 +202,15 @@ Resposta:
 Resposta:
 
 ```asm
-
+        mov ecx,2
+for01:  nop
+        mov tempecx,ecx
+        mov ecx,3
+for02:  nop
+        ; body of nested loop
+        loop for02
+        mov ecx,tempecx
+        loop for01
 ```
 
 ---
@@ -194,7 +233,7 @@ etc.
 
 Resposta:
 
-## Questão 10: Given the factorial function (n!) defined iteratively as follows
+## Questão 10: Given the Fibonacci sequence defined iteratively as follows
 
 ```c
 if n = 0, then 0
@@ -212,3 +251,21 @@ etc.
 * C. .repeat - .untilcxz
 
 Resposta:
+
+* Vamos tomar como base o seguinte código:
+
+    ```c
+        int n, primeiro = 0, segundo = 1, proximo;
+
+        while (primeiro <= n) {
+            proximo = primeiro + segundo;
+            primeiro = segundo;
+            segundo = proximo;
+        }
+    ```
+
+* A:
+
+    ```asm
+        
+    ```
