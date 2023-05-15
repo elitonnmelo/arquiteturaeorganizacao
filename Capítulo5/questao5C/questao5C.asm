@@ -16,7 +16,7 @@ msg4 Byte 0Ah, "Resto: ", 0
 dividendo       sdword ?
 divisor         sdword ?
 result         sdword ?
-resto         sdword ?
+resto         sdword 0
 
         .code
 
@@ -26,17 +26,20 @@ main    proc
         INVOKE printf, ADDR msg2
         INVOKE scanf, ADDR infmt, ADDR divisor
         
-        mov eax, dividendo
+        mov ecx, dividendo
         mov ebx, divisor
-        mov ecx, 0
+        mov eax, 0
         .repeat
-        sub eax, ebx
-        inc ecx
-        .until eax < ebx
-        mov edx, eax
-        mov eax, ecx
-        mov result, eax
+        .if ecx >= ebx
+        sub ecx, ebx
+        inc eax
+        .else
+        mov edx, ecx
+        mov ecx, 0       
+        .endif
+        .untilcxz        
         mov resto, edx
+        mov result, eax
         INVOKE printf, ADDR msgfmt, ADDR msg3, result
         INVOKE printf, ADDR msgfmt, ADDR msg4, resto
         ret

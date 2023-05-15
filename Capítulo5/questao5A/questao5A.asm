@@ -33,8 +33,10 @@ main    proc
         sub eax, ebx
         inc ecx
         .endw
-        mov result, ecx
-        mov resto, eax
+        mov edx, eax
+        mov eax, ecx
+        mov result, eax
+        mov resto, edx
         INVOKE printf, ADDR msgfmt, ADDR msg3, result
         INVOKE printf, ADDR msgfmt, ADDR msg4, resto
         ret
