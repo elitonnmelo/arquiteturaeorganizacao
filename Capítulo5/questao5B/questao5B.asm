@@ -29,12 +29,14 @@ main    proc
         mov eax, dividendo
         mov ebx, divisor
         mov ecx, 0
-        .while (eax >= ebx)
+        .repeat
         sub eax, ebx
         inc ecx
-        .endw
+        .until eax < ebx
+        mov edx, eax
+        mov eax, ecx
         mov result, eax
-        mov resto, ecx
+        mov resto, edx
         INVOKE printf, ADDR msgfmt, ADDR msg3, result
         INVOKE printf, ADDR msgfmt, ADDR msg4, resto
         ret
