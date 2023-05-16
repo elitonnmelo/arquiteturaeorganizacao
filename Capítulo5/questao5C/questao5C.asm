@@ -15,8 +15,9 @@ msg3 Byte "Quociente: ", 0
 msg4 Byte 0Ah, "Resto: ", 0
 dividendo       sdword ?
 divisor         sdword ?
-result         sdword ?
-resto         sdword 0
+result          sdword ?
+resto           sdword 0
+aux             sdword 0
 
         .code
 
@@ -27,15 +28,16 @@ main    proc
         INVOKE scanf, ADDR infmt, ADDR divisor
         
         mov ecx, dividendo
+        mov aux, ecx
         mov ebx, divisor
         mov eax, 0
         .repeat
-        .if ecx >= ebx
-        sub ecx, ebx
+        .if aux >= ebx
+        sub aux, ebx
         inc eax
+        mov edx, aux
         .else
-        mov edx, ecx
-        mov ecx, 0       
+        mov ecx, 1       
         .endif
         .untilcxz        
         mov resto, edx
