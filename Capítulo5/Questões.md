@@ -255,6 +255,50 @@ etc.
 * C. .repeat - .untilcxz
 
 Resposta:
+* A
+    ```asm
+    mov eax, number
+    mov ecx, number
+    .if eax == 1 || eax == 0
+    INVOKE printf, ADDR msg2; caso o número seja 1 ou 0  o resultado será 1
+    .else
+    .while ecx > 1
+    dec ecx
+    imul ecx
+    .endw  
+    mov result, eax
+    .endif
+    ```
+* B
+    ```asm
+    mov eax, number
+    mov ecx, number
+    .if eax == 1 || eax == 0
+    INVOKE printf, ADDR msg2; caso o número seja 1 ou 0  o resultado será 1
+    .else
+    .repeat
+    dec ecx
+    imul ecx
+    .until ecx <= 1
+    mov result, eax
+    .endif
+    ```
+* C
+    ```asm
+    mov eax, number
+    mov ecx, number
+    dec ecx
+    .if eax == 1 || eax == 0
+    INVOKE printf, ADDR msg2; caso o número seja 1 ou 0  o resultado será 1
+    .else
+    .repeat
+    .if ecx > 0
+    imul ecx
+    .endif
+    .untilcxz 
+    mov result, eax
+    .endif
+    ```
 
 ## Questão 10: Given the Fibonacci sequence defined iteratively as follows
 
