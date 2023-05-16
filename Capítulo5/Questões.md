@@ -191,7 +191,30 @@ Resposta:
 
 Resposta:
 
+Usando diretivas
 ```asm
+mov eax, sum
+mov ecx, i
+.repeat
+add eax, ecx
+sub ecx, 2
+.until ecx <= 0
+mov sum, eax
+
+```
+
+Usando cmp
+```asm
+            mov eax, sum
+            mov ecx, i
+doWhile01:  add eax, ecx
+            sub ecx, 2
+            jg doWhile01
+            cmp sum, eax
+            jle endDoWilhe
+            jg doWhile01      
+endDoWilhe: nop
+            mov sum, eax
 
 ```
 
