@@ -61,22 +61,24 @@
 
 ## Questão 2: Implement the last code segment in Sect. 5.1 without using directives and using only conditional and unconditional jumps
 
-```asm
-        mov ans, 0
-        cmp x, 0
-        je endif
-        mov ecx, 1
-while:  cmp ecx, y
-        jg endw
-        mov eax,ans 
-        add eax,x
-        mov ans,eax
-        inc ecx
-        jmp while
-endw:   nop
-        mov i, ecx
-endif:  nop
-```
+* Resposta:
+
+    ```asm
+            mov ans, 0
+            cmp x, 0
+            je endif
+            mov ecx, 1
+    while:  cmp ecx, y
+            jg endw
+            mov eax,ans 
+            add eax,x
+            mov ans,eax
+            inc ecx
+            jmp while
+    endw:   nop
+            mov i, ecx
+    endif:  nop
+    ```
 
 ---
 
@@ -128,21 +130,23 @@ endif:  nop
 
 ## Questão 4:  Implement the .repeat and .until directive at the end of Sect. 5.2 using only compare and jump instructions, along with the appropriate label names
 
-```asm
-                mov ans, 0
-                .if y! 0 
-                mov ecx,1
-    repeat:     nop
-                mov eax, ans
-                add eax, x
-                mov ans, eax
-                inc ecx
-                cmp ecx, y
-                jle repeat
-    until:      nop
-                mov i, ecx
-                .endif 
-```
+* Resposta:
+
+    ```asm
+                    mov ans, 0
+                    .if y! 0 
+                    mov ecx,1
+        repeat:     nop
+                    mov eax, ans
+                    add eax, x
+                    mov ans, eax
+                    inc ecx
+                    cmp ecx, y
+                    jle repeat
+        until:      nop
+                    mov i, ecx
+                    .endif 
+    ```
 
 ---
 
@@ -152,7 +156,8 @@ endif:  nop
 * B: .repeat - .until
 * C: .repeat - .untilcxz
 
-* Resposta : Código à parte
+---
+Resposta : Código à parte
 
 ---
 
@@ -192,6 +197,7 @@ Resposta:
 Resposta:
 
 Usando diretivas
+
 ```asm
 mov eax, sum
 mov ecx, i
@@ -204,6 +210,7 @@ mov sum, eax
 ```
 
 Usando cmp
+
 ```asm
             mov eax, sum
             mov ecx, i
@@ -255,7 +262,9 @@ etc.
 * C. .repeat - .untilcxz
 
 Resposta:
+
 * A
+
     ```asm
     mov eax, number
     mov ecx, number
@@ -269,7 +278,9 @@ Resposta:
     mov result, eax
     .endif
     ```
+
 * B
+
     ```asm
     mov eax, number
     mov ecx, number
@@ -283,7 +294,9 @@ Resposta:
     mov result, eax
     .endif
     ```
+
 * C
+
     ```asm
     mov eax, number
     mov ecx, number
@@ -300,6 +313,8 @@ Resposta:
     .endif
     ```
 
+---
+
 ## Questão 10: Given the Fibonacci sequence defined iteratively as follows
 
 ```c
@@ -311,7 +326,7 @@ if n = 4, then 1 + 2 = 3
 etc.
 ```
 
-### Implement the above function iteratively with your choice (or your instructor’s choice) of any of the following
+### implement the above function iteratively with your choice (or your instructor’s choice) of any of the following
 
 * A. .while
 * B. .repeat - .until
@@ -319,20 +334,88 @@ etc.
 
 Resposta:
 
-* Vamos tomar como base o seguinte código:
-
-    ```c
-        int n, primeiro = 0, segundo = 1, proximo;
-
-        while (primeiro <= n) {
-            proximo = primeiro + segundo;
-            primeiro = segundo;
-            segundo = proximo;
-        }
-    ```
-
 * A:
 
-    ```asm
-        
-    ```
+  * Vamos tomar como base o seguinte código:
+
+    ```c
+        #include <stdio.h>
+
+        int main() {
+            int n, first = 0, second = 1, proximo, result = 0;
+            
+            scanf("%d", &n);
+
+            while (n > 0) {
+                proximo = first + second;
+                first = second;
+                second = proximo;
+                n--;
+            }
+            result = first;
+            printf("%d, ", result);
+
+            return 0;
+        }
+        ```
+
+  * Resposta: código a parte
+
+* B:
+
+  * Vamos tomar como base o seguinte código:
+
+    ```c
+        #include <stdio.h>
+
+        int main() {
+            int n, first = 0, second = 1, nextTerm;
+
+            scanf("%d", &n);
+            
+            if(n >0){
+                do {
+                    printf("%d, ", first);
+                    nextTerm = first + second;
+                    first = second;
+                    second = nextTerm;
+                    n--;
+                } while (n > 0);
+            }
+
+            result = first;
+            printf("%d, ", result);
+            return 0;
+        }
+        ```
+
+  * Resposta: código a parte
+
+* C:
+
+  * Vamos tomar como base o seguinte código:
+
+    ```c
+        #include <stdio.h>
+
+        int main() {
+
+        int n, first = 0, second = 1, nextTerm;
+
+        scanf("%d", &n);
+
+        for (int i = 1; i <= n; i++) {
+            printf("%d, ", first);
+            nextTerm = first + second;
+            first = second;
+            second = nextTerm;
+        }
+
+        result = first;
+        printf("%d", result);
+
+        return 0;
+        }
+        ```
+
+  * Resposta: código a parte
