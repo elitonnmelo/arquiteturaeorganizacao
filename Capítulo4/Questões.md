@@ -152,53 +152,69 @@ Resposta:
 
 ## Questão 4: Given the example of the if-then-else-if structure in Problem 2 above,re-implement it using a nested if-then-if structure
 
+* Vamos nos baseas no seguinte código:
+
+    ```c
+        if (a <= b) 
+            if (b < c) 
+                if (c <= d) 
+                    d = d / 2; 
+                else 
+                    c = c + d; 
+            else 
+                b = b - 2; 
+        else 
+            a = a - 1
+    ```
+
 * A: Use MASM directives.
 
     ```masm
-        .if a > b
-        dec a
-        .endif
-        if b >=c
-        sub b,2
-        .endif
-        if c > d
-        add c,d
-        .endif
+        .if a <= b
+        .if b < c
+        .if c <= d
         mov eax, d
         cdq
         mov ebx, 2
         idiv ebx
-        mov d, eax
+        mov d, eax ; d = d/2
+        .else
+        mov eax, d
+        add c, eax ; c = c + d
+        .endif
+        .else
+        sub b, 2 ; b = b - 2
+        .endif
+        .else
+        sub a, 1 ; a = a - 1
+        .endif
+
     ```
 
 * B: Do not use MASM directives, but rather compares, jumps, and appropriate
 labels.
 
     ```asm
-                mov eax, a
-                cmp eax, b
-    if01:       jge endif01
-                dec a
-                jmp final
-    endif01:    nop
-                mov eax, b
-    if02:       cmp b, x
-                jl endif02
-                sub b,2
-                jmp final
-    endif02:    nop
-                mov eax, c
-    if03:       cmp eax, d
-                jle endif03
-                add c,d
-                jmp final
-    endif03:    nop
-    elseif03:   mov eax, d ;else só no nome
-                cdq        ;no caso é o then
-                mov ebx, 2
-                idiv ebx
-                mov d, eax
-    final:      nop                
+        if01:       mov eax, a
+                    cmp eax, b
+                    jg else01
+                    mov eax, b
+                    jge else02
+                    mov eax, c
+                    jg else03
+        then03:     mov eax, d
+                    cdq
+                    mov ebx, 2
+                    idiv ebx
+                    mov d, eax ; d = d/2
+        else03:     mov eax, d
+                    add c, eax ; c = c + d
+                    jmp endif
+        else02:     sub b, 2 ; b = b - 2
+                    jmp endif
+        else03:     sub a, 1 ; a = a - 1
+                    jmp endif
+        endif:      nop
     ```
 
 ## Questão 5:  Implement the following C switch statement, which does not have a default statement, using compares, jumps, and appropriate labels. If number does not contain a 0 through 3, then the value of count should not change
