@@ -66,9 +66,6 @@ main    proc
                 .endif
 
     endprog:    nop        
-                INVOKE printf, ADDR msg1fmt, ADDR msg1
-                INVOKE scanf, ADDR in1fmt, ADDR dsb
-                INVOKE printf, ADDR msg2fmt, ADDR msg2, dsb
         ret
 main    endp
         end
