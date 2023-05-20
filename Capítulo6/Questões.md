@@ -28,28 +28,45 @@
 
 ---
 
-* A:
+* A: answer = num - total / 32
 
     ```asm
-
+        mov eax, total
+        sar eax, 5
+        mov edx, num
+        sub edx, eax
+        mov answer, edx
     ```
 
-* B:
+* B: result = (amount + number) * 4
 
     ```asm
-
+        mov amount, eax
+        add eax, number
+        sal eax, 2
+        mov result, eax
     ```
 
-* C:
+* C: x = y * 8 + z / 2
 
     ```asm
-
+        mov eax, y
+        sal eax, 3
+        mov edx, z
+        sar edx, 1
+        add eax, edx
+        mov x, eax
     ```
 
-* D:
+* D: a = a / 16 – b * 6
 
     ```asm
-
+        sar a, 4 ; a / 16
+        mov eax, b
+        mov ebx, 3
+        imul ebx ; b * 3
+        sal eax, 1 ; (b * 3) * 2 = b * 6
+        sub a, eax
     ```
 
 ---
