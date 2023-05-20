@@ -4,21 +4,23 @@
 
 ---
 
-* A:
+* A: Correto
 
-* B:
+* B: Correto
 
-* C:
+* C: Incorreto. Não existe a instrução rotate, e sim rol ou ror
 
-* D:
+* D: Correto
 
-* F:
+* E: Correto
 
-* G:
+* F: Incorreto. Não é possivel realizara operação xchg realizando dois acessos a memória
 
-* H:
+* G: Incorreto. Não existe o registrador exc, e sim ecx
 
-* I:
+* H: Incorreto. Não existe a instrução lol, e sim rol.
+
+* I: Incorreto. Não existe a intrução shift e sim shr e shl que são usados como operções de shifts.  
 
 ---
 
