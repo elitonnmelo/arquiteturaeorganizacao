@@ -78,7 +78,17 @@
 * Resposta
 
     ```asm
+    ;; levando valores de eax, ebx, ecx, edx para a pilha
+    push eax
+    push ebx
+    push ecx
+    push edx
 
+    ;; retirando os valores de eax, ebx, ecx, edx da pilha já com os valores trocados
+    pop eax
+    pop ebx
+    pop ecx
+    pop edx
     ```
 
 ---
