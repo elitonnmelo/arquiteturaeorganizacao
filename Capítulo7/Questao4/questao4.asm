@@ -18,7 +18,7 @@ flag         sdword ?
 
             .code
 
-fatorial    macro number:REQ
+FATORIAL    macro number:REQ
 
             mov eax, number
             mov ecx, number
@@ -43,7 +43,7 @@ main        proc
             INVOKE printf, ADDR msg1
             INVOKE scanf, ADDR infmt, ADDR number1
 
-            fatorial number1
+            FATORIAL number1
             .if flag == 1
             INVOKE printf, ADDR msg2; caso o número seja 1 ou 0  o resultado será 1
             .else
