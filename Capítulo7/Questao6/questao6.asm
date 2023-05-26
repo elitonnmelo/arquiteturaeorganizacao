@@ -6,16 +6,17 @@ printf  PROTO arg1:Ptr Byte, printlist:VARARG
 scanf   PROTO arg2:Ptr Byte, inputlist:VARARG
 
         .data
-msgfmt  Byte "%s%d",0
-infmt Byte "%d", 0
-msg1 Byte "Digite o numero: ", 0
-operand      sdword ?
-number       sdword ?
-number2      sdword ?
-result       sdword ?
-
-
+msg1fmt byte 0Ah,"%s%d",0Ah,0Ah,0 
+msg1    byte "The contents of the accumulator are: ",0
+temp    sdword ?
             .code
+LOADACC     macro operand 
+            mov eax,operand ;; load eax with the operand
+            endm
+
+ADDACC      macro operand 
+            add eax,operand ;; add to eax the operand
+            endm
 
 MULTACC     macro operand
 
@@ -37,7 +38,7 @@ MULTACC     macro operand
             mov eax, ebx
             endif
 
-            if ecx GT 0
+            if operand GT 1
             .while ecx >0
             add eax,ebx         ;; repetitively add
             dec ecx             ;; decrement ecx
@@ -54,17 +55,21 @@ MULTACC     macro operand
             endm
 
 main        proc
-            INVOKE printf, ADDR msg1
-            INVOKE scanf, ADDR infmt, ADDR number
-
-            INVOKE printf, ADDR msg1
-            INVOKE scanf, ADDR infmt, ADDR number2
-
-            mov eax, number2
-            MULTACC number
-            mov result, eax
-            INVOKE printf, ADDR result
-            
+            LOADACC 1
+            MULTACC 12
+            CALL OUTACC
             ret
 main        endp
+OUTACC      proc
+
+            push eax ; save eax, ecx, and edx
+            push ecx 
+            push edx 
+            mov temp,eax 
+            INVOKE printf, ADDR msg1fmt, ADDR msg1, temp 
+            pop edx ; restore eax, ecx, and edx
+            pop ecx
+            pop eax
+            ret
+OUTACC      endp
             end

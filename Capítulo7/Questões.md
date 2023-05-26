@@ -52,44 +52,7 @@
 
 ---
 
-* Resposta:
-    ```asm
-    MULTACC macro operand
-
-            push ebx            ;; save ebx and ecx
-            push ecx
-            mov ebx,eax         ;; mov eax to ebx
-            mov eax,0           ;; clear accumulator to zero
-            mov ecx,operand     ;; load ecx with operand
-
-            if operand LT 0     ;; if operand is negative
-            neg ecx             ;; make ecx positive for loop
-            endif
-
-            if operand eq 0
-            mov eax, 0
-            endif
-
-            if operand eq 1
-            mov eax, ebx
-            endif
-
-            if ecx GT 0
-            .while ecx >0
-            add eax,ebx         ;; repetitively add
-            dec ecx             ;; decrement ecx
-            .endw
-            endif
-
-            if operand LT 0     ;; if operand is negative
-            neg eax             ;; negate accumulator, eax
-            endif
-
-            pop ecx             ;; restore ecx and ebx
-            pop ebx
-
-            endm
-    ```
+* Resposta: Código à parte
 
 ---
 
@@ -97,6 +60,6 @@
 
 ---
 
-* Resposta:
+* Resposta: Código à parte
 
 ---
