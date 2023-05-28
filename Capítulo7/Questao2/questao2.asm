@@ -6,28 +6,29 @@ printf  PROTO arg1:Ptr Byte, printlist:VARARG
 scanf   PROTO arg2:Ptr Byte, inputlist:VARARG
 
         .data
-msgfmt  Byte "%s%d",0
-infmt Byte "%d", 0
-msg1 Byte "Digite o numero: ", 0
-msg2 Byte "1", 0
-number       sdword ?
-result       sdword ?
-flag         sdword ?
+msgfmt          Byte "%s",0
+msgfmt2         Byte "The factorial of %d is: %d", 0
+infmt           Byte "%d", 0
+msg1            Byte "Digite o numero: ", 0
+msg2            Byte "1", 0
+number          sdword ?
+result          sdword ?
+flag            sdword ?
         .code
 
-main        proc
-            INVOKE printf, ADDR msg1
-            INVOKE scanf, ADDR infmt, ADDR number
+main    proc
+        INVOKE printf, ADDR msgfmt, ADDR msg1
+        INVOKE scanf, ADDR infmt, ADDR number
 
-            call fatorial
-            .if flag == 1
-            INVOKE printf, ADDR msg2; caso o número seja 1 ou 0  o resultado será 1
-            .else
-            INVOKE printf, ADDR result
-            .endif
+        call fatorial
+        .if flag == 1
+        INVOKE printf, ADDR msgfmt, ADDR msg2; caso o número seja 1 ou 0  o resultado será 1
+        .else
+        INVOKE printf, ADDR msgfmt2, number, result
+        .endif
             
-            ret
-main        endp
+        ret
+main    endp
 
 fatorial    proc
             mov eax, number
@@ -47,5 +48,5 @@ fatorial    proc
             mov flag, 0
             .endif
             ret
-fatorial    endproc            
+fatorial    endp            
             end
