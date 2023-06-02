@@ -9,7 +9,7 @@
 * C : Incorreto, o correto é ifb sem o ponto
 * D : Correto
 * E : Incorreto, não podemos comparar eax com um número, já que o valor dele só é definido na execução
-* F : Incorreto, faltou os parâmetros de comparação após o endif
+* F : Correto
 * G : Correto
 * H : Correto
 * I : Incorreto, não existe ifne

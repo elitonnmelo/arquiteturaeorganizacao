@@ -6,6 +6,7 @@ printf	PROTO arg1:Ptr Byte, printlist:VARARG
 		.data
 msgfmt		byte "%d",0
 msgfmt2		byte "The fibbonaci number in the %d posicion is: %d",0
+msg1        byte "Enter the number of the fibbonaci number you want to know: ",0
 first		sdword 0
 second		sdword 1
 next		sdword ?
@@ -33,6 +34,7 @@ fibbo   macro
         pop ecx
         endm           
 main	proc
+        INVOKE printf, ADDR msg1
 		INVOKE scanf, ADDR msgfmt, ADDR n
 		fibbo; como first, second e n foram iniciados, não é necessário fazer nada antes da chamada do procedimento
 		INVOKE printf, ADDR msgfmt2, n, result

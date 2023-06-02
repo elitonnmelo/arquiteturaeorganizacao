@@ -49,7 +49,12 @@ SUBACC      macro operand
             endm
 DIVACC      macro operand      ;; the result is stor em eax, the dividend are in ecx and the 
             push ebx           ;; divisor in the ebx, when "mov ebx, eax" is effected
-            push ecx           
+            push ecx   
+
+            .if eax < 0         ;; if eax is negative
+            neg eax            ;; make eax positive
+            .endif
+
             mov ecx, eax       
             mov eax, 0         ;; clear accumulator to zero
             mov ebx, operand   ;; operand is the dividend
@@ -79,6 +84,7 @@ main        proc
             ADDACC 2 
             ADDACC three
             MULTACC 4 
+            MULTACC -3
             DIVACC 3
             DIVACC -2
             SUBACC 6
