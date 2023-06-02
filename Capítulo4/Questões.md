@@ -22,7 +22,7 @@
     .endif
     ```
 
-    Resposta: Correto.
+    Resposta: Incorreto. Não é para colocar o then após o .if
 
 * C:
 
@@ -74,9 +74,9 @@ Resposta:
 
 * A
 
-    ```asm
-    f (w == 1 && x == 2)
-        y-;
+    ```c
+    if (w == 1 && x == 2)
+        y--;
     ```
 
     Resposta:
@@ -97,15 +97,20 @@ Resposta:
         count=count-2; 
     ```
 
-    Resposta:
+    Resposta: Vamos tomar como base o seguinte
+
+    ```c
+    if(num <= 0 || num > 3)
+        count = count - 2
+    ```
 
     ```asm
     if01:       cmp num, 0
-                jg endif01
-    and01:      cmp num, 3
-                jle endif01
-                sub count,2
-    endif01:    nop   
+                jle then01
+    or:         cmp num, 3
+                jle endif01          
+    then01:     sub count, 2
+    endif01:    nop
     ```
 
 * C
@@ -139,11 +144,11 @@ Resposta:
 
     ```asm
     if01:       cmp a, 1
-                je and01
+                je then01
     or01:       cmp c, 3
-                jne endif01
-    and01:      cmp c, 3
-                jle endif01
+                jle or02
+    and01:      cmp b, 2
+                je then01 ;;se chegar aqui, então a != 1, mas c > 3
     or02:       cmp d, 4
                 jg endif01
     then01:     dec e
@@ -198,9 +203,11 @@ labels.
         if01:       mov eax, a
                     cmp eax, b
                     jg else01
-                    mov eax, b
+        if02:       mov eax, b
+                    cmp eax, c
                     jge else02
-                    mov eax, c
+        if03:       mov eax, c
+                    cmp eax, d
                     jg else03
         then03:     mov eax, d
                     cdq
@@ -209,22 +216,71 @@ labels.
                     mov d, eax ; d = d/2
         else03:     mov eax, d
                     add c, eax ; c = c + d
-                    jmp endif
+                    jmp endifs
         else02:     sub b, 2 ; b = b - 2
-                    jmp endif
-        else03:     sub a, 1 ; a = a - 1
-                    jmp endif
-        endif:      nop
+                    jmp endifs
+        else01:     sub a, 1 ; a = a - 1
+                    jmp endifs
+        endifs:     nop
     ```
 
 ## Questão 5:  Implement the following C switch statement, which does not have a default statement, using compares, jumps, and appropriate labels. If number does not contain a 0 through 3, then the value of count should not change
 
+```c
+    switch number {
+        case 0: 
+        case 1: count = count +2; 
+        break; 
+        case 2: 
+        case 3: count = count - 2; 
+    }
+```
+
 ```asm
-    Resposta: Código à parte
+Resposta: Código à parte
 ```
 
 ## Questão 6: Implement the program in Sect. 4.8 in assembly language without using high-level directives with only compares, jumps, and appropriate labels
 
 ```asm
-    Resposta: Código à parte
+        .686 
+        .model flat,c 
+        .stack 100h 
+scanf PROTO arg2:Ptr Byte, inputlist:VARARG
+printf PROTO arg1:Ptr Byte, printlist:VARARG 
+        .data 
+in1fmt byte "%d",0 
+msg1fmt byte "%s",0 
+msg2fmt byte 0Ah,"%s",0Ah,0
+msg4fmt byte "%s",0Ah,0
+msg6fmt byte 0Ah,0 
+msg1 byte "Enter an AC voltage: ",0
+msg2 byte "Voltage is Acceptable",0
+msg3 byte "Warning!",0 
+msg4 byte "Voltage too Low",0 
+msg5 byte "Voltage too High",0 
+voltage sdword ? 
+        .code 
+main    proc 
+        INVOKE printf, ADDR msg1fmt, ADDR msg1
+        INVOKE scanf, ADDR in1fmt, ADDR voltage 
+        .if voltage >=110 && voltage <= 120 
+        INVOKE printf, ADDR msg2fmt, ADDR msg2 
+        .else 
+        INVOKE printf, ADDR msg2fmt, ADDR msg3 
+        .if voltage < 110 
+        INVOKE printf, ADDR msg4fmt, ADDR msg4 
+        .else 
+        INVOKE printf, ADDR msg4fmt, ADDR msg5 
+        .endif 
+        .endif 
+        INVOKE printf, ADDR msg6fmt
+        ret 
+main    endp
+        end 
+
+```
+
+```asm
+Resposta: Código à parte
 ```
