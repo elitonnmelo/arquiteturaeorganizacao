@@ -44,7 +44,7 @@
     .untiledx
     ```
 
-    Resposta: Incorreto. Não existe .untiledx, o correto seria .untilczx e mover o total de repetições para ecx, pois esse é o registrador responsável poressa função.
+    Resposta: Incorreto. Não existe .untiledx, o correto seria .untilcxz e mover o total de repetições para ecx, pois esse é o registrador responsável por essa função.
 
 * E
 
@@ -61,23 +61,37 @@
 
 ## Questão 2: Implement the last code segment in Sect. 5.1 without using directives and using only conditional and unconditional jumps
 
+```asm
+    mov ans,0 ; initialize ans to 0
+    .if x! 0
+    mov ecx,1 ; initialize ecx to 1
+    .while ecx< y
+    mov eax,ans ; load eax with ans
+    add eax,x ; add x to ans
+    mov ans,eax ; store eax in ans
+    inc ecx ; increment ecx by one
+    .endw
+    mov i,ecx ; store ecx in i 
+    .endif
+```
+
 * Resposta:
 
     ```asm
-            mov ans, 0
-            cmp x, 0
-            je endif
-            mov ecx, 1
-    while:  cmp ecx, y
-            jg endw
-            mov eax,ans 
-            add eax,x
-            mov ans,eax
-            inc ecx
-            jmp while
-    endw:   nop
-            mov i, ecx
-    endif:  nop
+                mov ans, 0
+                cmp x, 0
+                je endif
+                mov ecx, 1
+    while01:    cmp ecx, y
+                jge endw01
+                mov eax,ans 
+                add eax,x
+                mov ans,eax
+                inc ecx
+                jmp while01
+    endw01:     nop
+                mov i, ecx
+    endif:      nop
     ```
 
 ---
@@ -130,20 +144,34 @@
 
 ## Questão 4:  Implement the .repeat and .until directive at the end of Sect. 5.2 using only compare and jump instructions, along with the appropriate label names
 
+```asm
+    mov ans,0
+    .if y! 0 
+    mov ecx,1
+    .repeat
+    mov eax,ans
+    add eax,x
+    mov ans,eax
+    inc ecx
+    .until ecx>y
+    mov i,ecx
+    .endif
+```
+
 * Resposta:
 
     ```asm
                     mov ans, 0
                     .if y! 0 
                     mov ecx,1
-        repeat:     nop
+        repeat01:   nop
                     mov eax, ans
                     add eax, x
                     mov ans, eax
                     inc ecx
                     cmp ecx, y
                     jle repeat
-        until:      nop
+        until01:    nop
                     mov i, ecx
                     .endif 
     ```
@@ -189,8 +217,8 @@ Resposta:
     i = 10;
     sum = 0;
     do {
-    sum = sum+i;
-    i = i-2;
+        sum = sum+i;
+        i = i-2;
     } while i>0;
 ```
 
@@ -214,13 +242,12 @@ Usando cmp
 ```asm
             mov eax, sum
             mov ecx, i
-doWhile01:  add eax, ecx
+doWhile01:  nop
+            add eax, ecx
             sub ecx, 2
-            jg doWhile01
-            cmp sum, eax
-            jle endDoWilhe
+            cmp ecx, 0
             jg doWhile01      
-endDoWilhe: nop
+endDoWhile: nop
             mov sum, eax
 
 ```
@@ -228,6 +255,18 @@ endDoWilhe: nop
 ---
 
 ## Questão 8: Implement the last code segment in Sect. 5.5 using the loop instruction instead of .repeat and .untilcxz directives
+
+```asm
+mov ecx,2
+.repeat
+mov tempecx,ecx
+mov ecx,3
+.repeat
+; body of nested loop
+.untilcxz
+mov ecx,tempecx
+.untilcxz
+```
 
 Resposta:
 
