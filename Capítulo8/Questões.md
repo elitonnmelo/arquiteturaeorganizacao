@@ -2,17 +2,41 @@
 
 ## Questão 1: Given the following assembly language statements, indicate whether they are syntactically correct or incorrect. If incorrect, indicate what is wrong with the statement
 
-* A: x sdword ?,?,?
+* A. Resposta:
 
-* B. y sdword 3 dup(0)
+    ```asm
+    x sdword ?,?,?
+    ```
 
-* C. mov eax,x+8
+* B. Resposta:
 
-* D. mov eax,y[ebx]
+    ```asm
+    y sdword 3 dup(0)
+    ```
 
-* E. mov esi,edi
+* C. Resposta:
 
-* F. mov [esi],[edi]
+    ```asm
+    mov eax,x+8
+    ```
+
+* D. Resposta:
+
+    ```asm
+    mov eax,y[ebx]
+    ```
+
+* E. Resposta:
+
+    ```asm
+    mov esi,edi
+    ```
+
+* F. Resposta:
+
+    ```asm
+    mov [esi],[edi]
+    ```
 
 ---
 
@@ -92,12 +116,41 @@
     oarray sword 15,20,25
 ```
 
-* A. mov eax, lengthof narray
-* B. mov eax, sizeof narray
-* C. mov eax, lengthof marray
-* D. mov eax, sizeof marray
-* E. mov eax, lengthof oarray
-* F. mov eax, sizeof oarray
+* A. Resposta: 5
+
+    ```asm
+    mov eax, lengthof narray
+    ```
+
+* B. Resposta: 20
+
+    ```asm
+    mov eax, sizeof narray
+    ```
+
+* C. Resposta: 10
+
+    ```asm
+    mov eax, lengthof marray
+    ```
+
+* D.  Resposta: 40
+
+    ```asm
+    mov eax, sizeof marray
+    ```
+
+* E.  Resposta: 3
+
+    ```asm
+    mov eax, lengthof oarray
+    ```
+
+* F. Resposta: 6
+
+    ```asm
+    mov eax, sizeof oarray
+    ```
 
 ---
 
