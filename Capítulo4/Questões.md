@@ -1,6 +1,10 @@
 # Resolução das questões
 
+> Correção: 0,8
+
 ## Questão 1: Indicate whether the following statements are syntactically correct or incorrect in MASM. If incorrect, indicate what is wrong with the statement
+
+> Correção: 0,3
 
 * A:
 
@@ -48,6 +52,9 @@
 
 ## Questão 2: Using MASM directives, write an assembly language code segment to implement the following
 
+> Correção: 0,1.
+> Você não pode fazer _.if a > b_, pois _a_ e _b_ são localizações de memória.
+
 Resposta:
 
 ```asm
@@ -71,6 +78,8 @@ Resposta:
 ```
 
 ## QUETSÃO 3: Convert the following C selection structures to the corresponding assemblylanguage code segments. Do not use MASM directives, but rather only compares, jumps, and appropriate labels (hint: Problem B, use De Morgan’s rules)
+
+> Correção: 0,3
 
 * A
 
@@ -135,6 +144,8 @@ Resposta:
 
 * D
 
+> Correção: Aqui deu certo, mas é bom lembrar que o && tem precedência maior que o ||.
+
     ```asm
     if (a == 1 || b == 2 && c > 3 || d <= 4) 
         e--;
@@ -156,6 +167,8 @@ Resposta:
     ```
 
 ## Questão 4: Given the example of the if-then-else-if structure in Problem 2 above,re-implement it using a nested if-then-if structure
+
+> Correção: 0,1. Mesmo problema, não podemos comparar duas posições de memória, seja com diretivas ou com _cmp_.
 
 * Vamos nos baseas no seguinte código:
 
