@@ -2,6 +2,8 @@
 
 ## Questão 1: Given the following assembly language statements, indicate whether they are syntactically correct or incorrect. If incorrect, indicate what is wrong with the statement
 
+> Correção: 0,1
+
 * A
 
     ```asm
@@ -61,6 +63,8 @@
 
 ## Questão 2: Implement the last code segment in Sect. 5.1 without using directives and using only conditional and unconditional jumps
 
+> Correção: 0,1
+
 ```asm
     mov ans,0 ; initialize ans to 0
     .if x! 0
@@ -76,6 +80,8 @@
 ```
 
 * Resposta:
+
+> Correção: aqui seria _jg endw01_ no lugar de _jge endw01_.
 
     ```asm
                 mov ans, 0
@@ -97,6 +103,8 @@
 ---
 
 ## Questão 3:  Given the following while loops implemented using conditional and unconditional jumps, indicate how many times the body of each loop w
+
+> Correção: 0,1
 
 * A
 
@@ -143,6 +151,8 @@
 ---
 
 ## Questão 4:  Implement the .repeat and .until directive at the end of Sect. 5.2 using only compare and jump instructions, along with the appropriate label names
+
+> Correção: 0,1.
 
 ```asm
     mov ans,0
@@ -191,6 +201,8 @@ Resposta : Código à parte
 
 ## Questão 6:  Implement the following C segment using the .repeat - .untilcxz directives. What if the value of n is 0 or negative? Does your code segment still work properly? How can this problem be rectified?
 
+> Correção: 0,1
+
 ```c
     sum = 0;
     for (i  = 1; i < n; i++)
@@ -212,6 +224,8 @@ Resposta:
 ---
 
 ## Questão 7: Implement the following do-while loop first using the .repeat - .until directives and then using only compares, and conditional and unconditional jumps
+
+> Correção: 0,2
 
 ```c
     i = 10;
@@ -256,6 +270,8 @@ endDoWhile: nop
 
 ## Questão 8: Implement the last code segment in Sect. 5.5 using the loop instruction instead of .repeat and .untilcxz directives
 
+> Correção: 0,2
+
 ```asm
 mov ecx,2
 .repeat
@@ -296,6 +312,8 @@ etc.
 
 ### Implement the above function iteratively with your choice (or your instructor’s choice) of any of the following
 
+> Correção: 0,5. Por que fez a 10 como programa completo, mas a 9 apenas os trechos?
+
 * A. .while
 * B. .repeat - .until
 * C. .repeat - .untilcxz
@@ -303,6 +321,8 @@ etc.
 Resposta:
 
 * A
+
+> Correção: Você decrementou _ecx_ antes da primeira multiplicação. Logo os resultados estão incorretos.
 
     ```asm
     mov eax, number
