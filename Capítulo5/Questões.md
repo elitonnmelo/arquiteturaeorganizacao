@@ -312,7 +312,7 @@ etc.
 
 ### Implement the above function iteratively with your choice (or your instructor’s choice) of any of the following
 
-> Correção: 0,5. Por que fez a 10 como programa completo, mas a 9 apenas os trechos?
+> Correção: 1,0. Por que fez a 10 como programa completo, mas a 9 apenas os trechos?
 
 * A. .while
 * B. .repeat - .until
