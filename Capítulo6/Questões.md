@@ -2,6 +2,8 @@
 
 ## Questão 1: Given the following assembly language statements, indicate whether they are syntactically correct or incorrect. If incorrect, indicate what is wrong with the statement
 
+> Correção: 0,5
+
 ---
 
 * A: Correto
@@ -25,6 +27,8 @@
 ---
 
 ## Questão 2: Given the following C arithmetic instructions, implement them using arithmetic shift instructions, where possible
+
+> Correção: 0,5
 
 ---
 
@@ -72,6 +76,8 @@
 ---
 
 ## Questão 3: Write a code segment that takes the contents of eax, ebx, ecx, and edx, and puts them in the reverse order of edx, ecx, ebx, and eax using only the push and pop instructions. In other words, eax should contain the contents of edx and vice versa, etc
+
+> Correção: 0,5
 
 ---
 
