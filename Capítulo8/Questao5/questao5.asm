@@ -36,32 +36,31 @@ main        proc
             add ebx, 4
             inc count
             pop ecx
-            .uintilcxz
+            .untilcxz
 
             
-            lea esi, arry1
-            lea edi, arry2
+            lea edi, arry1
+            lea esi, arry2
             mov ecx, 20
 
             .repeat
             push ecx
-            mov eax, arry1[esi]
-            mov arry2[edi], eax 
+            mov eax, edi
+            mov [esi], eax 
             add esi, 4
             add edi, 4
-            inc count
             pop ecx
             .untilcxz
 
             INVOKE printf, ADDR msg1fmt, ADDR msg3
-            lea edi, arry2
             mov ecx, 20
+            mov ebx, 0
 
             .repeat
             push ecx
-            mov eax, arry2[edi]
+            mov eax, arry2[ebx]
             INVOKE printf, ADDR msg2fmt, eax
-            add edi, 4
+            add ebx, 4
             pop ecx
             .untilcxz
             
