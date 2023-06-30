@@ -19,7 +19,6 @@ count   sdword 0
 
 in1fmt  sdword "%d",0
 
-;arry1    sdword 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,17, 18, 19
 arry1    sdword 20 dup(?)
 arry2    sdword 20 dup(?)
 
