@@ -15,9 +15,9 @@ msg2    byte "Numero"
 msg3    byte 0Ah,"Elementos do array 2:",0Ah,0
 msg4    byte ": ",0
 
-count   byte 0
+count   sdword 0
 
-in1fmt  btye "%d",0
+in1fmt  sdword "%d",0
 
 ;arry1    sdword 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,17, 18, 19
 arry1    sdword 20 dup(?)
@@ -36,8 +36,8 @@ main        proc
             .endw
 
             mov count, 0 
-            lea esi arry1
-            lea edi arry2
+            lea esi, arry1
+            lea edi, arry2
             .while count < 20 
             mov eax, arry1[esi]
             mov arry2[edi], eax 
@@ -48,7 +48,7 @@ main        proc
 
             mov count, 0
             INVOKE printf, ADDR msg1fmt, ADDR msg3
-            lea edi arry2
+            lea edi, arry2
             .while count < 20
             mov eax, arry2[edi]
             INVOKE printf, ADDR msg2fmt, eax
