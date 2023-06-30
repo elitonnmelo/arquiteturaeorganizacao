@@ -27,33 +27,43 @@ main        proc
 
             INVOKE printf, ADDR msg1fmt, ADDR msg1
             mov ebx, 0
-            .while cout < 20
+            mov ecx, 20
+
+            .repeat
+            push ecx
             INVOKE printf, ADDR msg1fmt, ADDR msg2, ADDR msg2fmt, ADDR count, ADDR msg1fmt, ADDR msg4
             INVOKE scanf, ADDR in1fmt, ADDR arry1[ebx]
             add ebx, 4
             inc count
-            .endw
+            pop ecx
+            .uintilcxz
 
-            mov count, 0 
+            
             lea esi, arry1
             lea edi, arry2
-            .while count < 20 
+            mov ecx, 20
+
+            .repeat
+            push ecx
             mov eax, arry1[esi]
             mov arry2[edi], eax 
             add esi, 4
             add edi, 4
             inc count
-            .endw
+            pop ecx
+            .untilcxz
 
-            mov count, 0
             INVOKE printf, ADDR msg1fmt, ADDR msg3
             lea edi, arry2
-            .while count < 20
+            mov ecx, 20
+
+            .repeat
+            push ecx
             mov eax, arry2[edi]
             INVOKE printf, ADDR msg2fmt, eax
             add edi, 4
-            inc count
-            .endw
+            pop ecx
+            .untilcxz
             
 
             ret
