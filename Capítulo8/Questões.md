@@ -21,7 +21,7 @@
     mov eax,x+8
     ```
 
-* D. Resposta: Incorreto, não pode realizar dois acessos a memória.
+* D. Resposta: Correto
 
     ```asm
     mov eax,y[ebx]
