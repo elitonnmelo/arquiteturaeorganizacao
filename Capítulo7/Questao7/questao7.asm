@@ -1,4 +1,4 @@
-;
+;   Correção: 0,5. INACC não está como macro e o resultado impresso é um valor que não corresponde às operações realizadas.
 ;   Building Instructions:
 ;   ml /c /Fl"Calculator.lst" /Cx /coff Calculator.asm /link /SUBSYSTEM:console  /out:Calculator.exe kernel32.lib legacy_stdio_definitions.lib msvcrt.lib
 ;

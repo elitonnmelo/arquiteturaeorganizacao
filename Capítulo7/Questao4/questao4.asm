@@ -1,5 +1,6 @@
         .686
         .model  flat, c 
+; Correção: 0,1
         .stack  100h 
 
 printf  PROTO arg1:Ptr Byte, printlist:VARARG
