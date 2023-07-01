@@ -2,37 +2,38 @@
 
 ## Questão 1: Given the following assembly language statements, indicate whether they are syntactically correct or incorrect. If incorrect, indicate what is wrong with the statement
 
-* A. Resposta:
+* A. Resposta: Correto.
 
     ```asm
     x sdword ?,?,?
     ```
 
-* B. Resposta:
+* B. Resposta: Correto.
 
     ```asm
     y sdword 3 dup(0)
     ```
+    
 
-* C. Resposta:
+* C. Resposta: Correto.
 
     ```asm
     mov eax,x+8
     ```
 
-* D. Resposta:
+* D. Resposta: Correto
 
     ```asm
     mov eax,y[ebx]
     ```
 
-* E. Resposta:
+* E. Resposta: Correto
 
     ```asm
     mov esi,edi
     ```
 
-* F. Resposta:
+* F. Resposta:  Incorreto, não pode realizar dois acessos a memória.
 
     ```asm
     mov [esi],[edi]
@@ -102,10 +103,32 @@
 ## Questão 3: Implement the following C instructions using assembly language. Assume all variables are declared as sdword
 
 * A. num[0] = 1;
+
+    ```asm
+    mov num+0,1 
+    ```
 * B. x[1] = x[2];
+
+    ```asm
+    mov eax, x+8[esi]
+    mov x+4[esi], eax
+    ```
+
 * C. y[i+1] = y[i];
+
+    ```asm
+    mov eax,num[ebx] 
+    mov num+4[ebx],eax
+    ```
+
 * D. z[i] = z[j];
 
+    ```asm
+    mov esi, j
+    mov edi, z[esi]
+    mov esi, i
+    mov z[esi], edi 
+    ```
 ---
 
 ## Questão 4: Given the declarations below, indicate what would be stored in the eax register for each of the following instructions. Note that oarray is of type sword, not sdword (hint: see Chap. 1)
