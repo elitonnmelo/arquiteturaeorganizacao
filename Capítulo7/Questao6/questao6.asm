@@ -1,3 +1,4 @@
+; Correção: 1,0
         .686
         .model  flat, c 
         .stack  100h 
@@ -55,8 +56,8 @@ MULTACC     macro operand
             endm
 
 main        proc
-            LOADACC 1
-            MULTACC 12
+            LOADACC 12
+            MULTACC 1
             CALL OUTACC
             ret
 main        endp
