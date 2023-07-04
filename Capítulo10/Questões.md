@@ -89,38 +89,83 @@ Resposta:
 * a. answer = x – y + z;
 
     Resposta:
+    * *Post-fix form:* xy-z+
 
      ```asm
-
+    fld x
+    fld y
+    fsub
+    fld z
+    fadd
+    fstp answer
     ```
 
 * b. result = (w + x) / (y – z);
 
+    * *Post-fix form:* wx+yz-/
+
     Resposta:
 
      ```asm
+    fld w
+    fld x
+    fadd
 
+    fld y
+    fld z
+    fsub
+
+    fdiv
+
+    fstp result
     ```
 
 * c. info = a / b * c – d;
 
+    * *Post-fix form:* ab/c*d-
+
     Resposta:
 
      ```asm
+    fld a
+    fld b
+    fdiv
 
+    fld c
+    fmul
+
+    fld d
+    fsub
+
+    fstp info
     ```
 
 * d. data = i * j + (k / (m – n));
 
+    * *Post-fix form:* ij*kmn-/+
+
     Resposta:
 
      ```asm
+    fld i
+    fld j
+    fmul
 
+    fld k
+    fld m
+    fld n
+    fsub
+
+    fdiv
+
+    fadd
+
+    fstp data
     ```
 
 ---
 
-## Questão 3: Write the equivalent assembly language code segment for the C program in Sect. 10.7.3 (which uses type long double).
+## Questão 3: Write the equivalent assembly language code segment for the C program in Sect. 10.7.3 (which uses type long double)
 
 ### Code
 
@@ -168,7 +213,13 @@ Resposta:
     }
 ```
 
-### Resposta
+### Resposta float
+
+```asm
+
+```
+
+### Resposta long double
 
 ```asm
 
@@ -181,11 +232,11 @@ Resposta:
 ### Code
 
 ```asm
-;if x > y
-if01: fld y
-fld x
-fcomip st(0), st(1)
-jbe endif01
+        ;if x > y
+if01:   fld y
+        fld x
+        fcomip st(0), st(1)
+        jbe endif01
 then01: INVOKE printf, ADDR msg2fmt, ADDR msg2
 endif01: nop
 ```
@@ -212,7 +263,7 @@ then01: INVOKE printf, ADDR msg2fmt, ADDR msg2
         jmp endif01
 else01: nop
         ;if x < y
-        if02: fld y
+if02:   fld y
         fld x
         fcomip st(0), st(1)
         jae endif02
