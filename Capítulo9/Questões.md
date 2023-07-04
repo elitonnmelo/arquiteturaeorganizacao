@@ -42,34 +42,26 @@
 
 ## Questão 2: Given the following declarations, walk through the following code segments and indicate the contents of the ecx, esi, edi, and al registers upon completion of each segment. You may assume that string1 starts at memory location 100 and string2 at memory location 105. With problem D, in addition to the registers, what would be the contents of string2?
 
-<<<<<<< HEAD
-´´´´string1 byte "abcde"
->string2 byte "abcyz"
-
-* A
-
-    ```asm
-=======
 >string1 byte "abcde" <br>
 >string2 byte "abcyz"
 
-* A Resposta: EAX = 4, EDI = 99, AL = 5C
+
+* A Resposta: ECX = 2, ESI = undefined, EDI = 103, AL = "c"
     ```asm 
->>>>>>> fc9e71d (update)
     mov ecx,5
     mov al,"c"
     mov edi,offset string1
     rep scasb
     ```
 
-* B
+* B Resposta: ECX = 5, ESI = 104, EDI = undefined, AL = "d"
 
     ```asm
     mov esi,offset string1+3 
     Lodsb
     ```
 
-* C
+* C Resposta: ECX = 1, ESI = 104, EDI = 109, AL = undefined
 
     ```asm
     mov ecx,5
@@ -78,7 +70,7 @@
     repe cmpsb
     ```
 
-* D
+* D Resposta: ECX = 2, ESI = 103, EDI = 107, AL = undefined
 
     ```asm
     mov ecx,5 
@@ -87,7 +79,7 @@
     repne cmpsb
     ```
 
-* E
+* E Resposta: ECX = 5, ESI = undefined, EDI = 106, AL = "d"
 
     ```asm
     lea edi,string2
