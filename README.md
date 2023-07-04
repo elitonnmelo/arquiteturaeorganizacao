@@ -8,6 +8,8 @@ Este repositório contém os códigos desenvolvidos durante a disciplina de Arqu
 
 O repositório está organizado da seguinte forma:
 
+- **Livro**: Guide to Assembly Language - second edition, James T. Streib.
+
 - **Códigos**: Esta pasta contém os códigos-fonte das atividades desenvolvidas ao longo da disciplina. Cada atividade possui uma pasta separada, com seus respectivos códigos e instruções de execução.
 
 ## Como utilizar este repositório
