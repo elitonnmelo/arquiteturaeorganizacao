@@ -19,19 +19,6 @@ main    proc
         .while ecx > 0
                 mov tempecx, ecx
 
-                mov ecx, 10
-                mov ebx, offset arraystr
-                add ebx, aux
-                add ebx, 9
-                mov esi, ebx
-                lea edi, straux
-                
-                .repeat
-                        mov al, [esi]
-                        mov [edi], al
-                        inc edi
-                        dec esi
-                .untilcxz
 
                 mov ecx, 10
                 mov ebx, offset arraystr
@@ -59,7 +46,22 @@ main    proc
                 dec ecx
                 add aux, 10
         .endw
-
+MOV_INV proc
+        mov ecx, 10
+        mov ebx, offset arraystr
+        add ebx, aux
+        add ebx, 9
+        mov esi, ebx
+        lea edi, straux
+        
+        .repeat
+                mov al, [esi]
+                mov [edi], al
+                inc edi
+                dec esi
+        .untilcxz
+        ret
+MOV_INV endp        
         ret
 main    endp
         end
