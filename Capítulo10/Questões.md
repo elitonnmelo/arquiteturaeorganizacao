@@ -233,14 +233,44 @@ end
 
 ### Resposta float
 
-```asm
+```c
+#include <stdio.h>
+int main() {
+  float x;
+  double y; //não é possível escrever um real4(float), então y deve ser double(real8)
+  printf("\n%s", "Enter a double for x: ");
+  scanf_s("%f", &x);
 
+  __asm {
+        fld x
+        fstp y
+  }
+  
+  printf("\n%s%6.4f\n\n", "The double in y is: ", y);
+  return 0;
+}
 ```
 
 ### Resposta long double
 
-```asm
+```c
+#include <stdio.h>
 
+    int main() {
+
+    long double x,y;
+
+    printf("\n%s", "Enter a double for x: ");
+    scanf_s("%Lf", &x);
+
+    __asm {
+    fld x
+    fstp y
+    }
+
+    printf("\n%s%6.4Lf\n\n", "The double in y is: ", y);
+    return 0;
+    }
 ```
 
 ---
