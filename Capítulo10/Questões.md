@@ -267,6 +267,8 @@ then02:         INVOKE printf, ADDR msg2fmt, ADDR msg3
 endif02:        nop
 endif01:        nop
 
+```
+
 ### Resposta
 
 ```asm
@@ -284,6 +286,7 @@ then01:     INVOKE printf, ADDR msg2fmt, ADDR msg2
 else01:     INVOKE printf, ADDR msg2fmt, ADDR msg4
 endif01:    nop
 
+```
 
 ---
 
@@ -341,6 +344,7 @@ endif01: nop
 ## Questão 7: Change the complete program in Sect. 10.9 to implement a do-while structure (post-test loop) instead of while structure (pre-test loop). Make sure that it works properly for 0.0 and negative numbers
 
 ---
+
 * Resposta: Código à Parte
 
 ---
