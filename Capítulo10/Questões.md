@@ -274,8 +274,28 @@ endif01: nop
 
 ### Resposta
 
-```asm
+* Obs: Vamos considerar que msg1 é "x is greater than y", msg2 é "x is less than y" e msg3 é "x and y are equal"
 
+```asm
+        ;if x > y
+if01:   fld y
+        fld x
+        fcomip st(0), st(1)
+        jbe else01
+then01: INVOKE printf, ADDR msgfmt, ADDR msg1
+        jmp endif01
+else01: nop
+        ;if x < y
+if02:   fld y
+        fld x
+        fcomip st(0), st(1)
+        jae else02
+then02: INVOKE printf, ADDR msgfmt, ADDR msg2
+        jmp endif02
+else02: INVOKE printf, ADDR msgfmt, ADDR msg3    
+        jmp endif02
+endif02: nop
+endif01: nop
 ```
 
 ---
