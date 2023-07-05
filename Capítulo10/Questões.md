@@ -23,7 +23,7 @@ fistp z
 Resposta:
 
 ```asm
-
+        8
 ```
 
 ---
@@ -42,7 +42,7 @@ fisttp z
 Resposta:
 
 ```asm
-
+        8
 ```
 
 ---
@@ -59,7 +59,7 @@ fistp z
 Resposta:
 
 ```asm
-
+        4
 ```
 
 ---
@@ -79,7 +79,7 @@ fistp z
 Resposta:
 
 ```asm
-
+        10
 ```
 
 ---
@@ -184,6 +184,24 @@ Resposta:
 ### Resposta
 
 ```asm
+          .data
+in1fmt    byte    "%Lf", 0
+msg0fmt   byte    0Ah,"%s", 0
+msg1fmt   byte    0Ah,"%s%6.4Lf",0Ah,0Ah, 0
+msg0      byte    "Enter a long double for x: ", 0
+msg1      byte    "The long double in y is: ", 0
+x         real10   ?
+y         real10   ?
+          .code
+main      proc
+          INVOKE printf, ADDR msg0fmt, ADDR msg0
+          INVOKE scanf, ADDR in1fmt, ADDR x
+          fld x
+          fstp y
+          INVOKE printf, ADDR msg1fmt, ADDR msg1, y
+          ret 
+main      endp
+end
 
 ```
 
@@ -232,20 +250,40 @@ Resposta:
 ### Code
 
 ```asm
-        ;if x > y
-if01:   fld y
-        fld x
-        fcomip st(0), st(1)
-        jbe endif01
-then01: INVOKE printf, ADDR msg2fmt, ADDR msg2
-endif01: nop
-```
+                ;if x > y
+if01:           fld y
+                fld x
+                fcomip st(0), st(1)
+                jbe else01
+then01:         INVOKE printf, ADDR msg2fmt, ADDR msg2
+                jmp endif01
+else01:         nop
+                ;if x < y
+if02:           fld y
+                fld x
+                fcomip st(0), st(1)
+                jae endif02
+then02:         INVOKE printf, ADDR msg2fmt, ADDR msg3
+endif02:        nop
+endif01:        nop
 
 ### Resposta
 
 ```asm
+...
+msg4        byte    "x is less than or equal to y", 0
+...
 
-```
+            ;if x > y
+if01:       fld y
+            fld x
+            fcomip st(0), st(1)
+            jbe else01
+then01:     INVOKE printf, ADDR msg2fmt, ADDR msg2
+            jmp endif01
+else01:     INVOKE printf, ADDR msg2fmt, ADDR msg4
+endif01:    nop
+
 
 ---
 
