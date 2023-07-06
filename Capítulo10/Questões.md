@@ -284,17 +284,8 @@ int main() {
 if01:           fld y
                 fld x
                 fcomip st(0), st(1)
-                jbe else01
+                jbe endif01
 then01:         INVOKE printf, ADDR msg2fmt, ADDR msg2
-                jmp endif01
-else01:         nop
-                ;if x < y
-if02:           fld y
-                fld x
-                fcomip st(0), st(1)
-                jae endif02
-then02:         INVOKE printf, ADDR msg2fmt, ADDR msg3
-endif02:        nop
 endif01:        nop
 
 ```
