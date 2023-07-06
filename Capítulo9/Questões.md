@@ -26,7 +26,7 @@
      stosb
     ```
 
-* E. Resposta: Incorreto, o correto seria rep stosb e não rept strsb
+* E. Resposta: Incorreto, o correto seria rep storsb e não rept strsb
 
     ```asm
      rept strsb
@@ -45,16 +45,16 @@
 >string1 byte "abcde" <br>
 >string2 byte "abcyz"
 
-
 * A Resposta: ECX = 2, ESI = undefined, EDI = 103, AL = "c"
-    ```asm 
+
+    ```asm
     mov ecx,5
     mov al,"c"
     mov edi,offset string1
     rep scasb
     ```
 
-* B Resposta: ECX = 5, ESI = 104, EDI = undefined, AL = "d"
+* B Resposta: ECX = undefined(não foi iniciado, então quando houver a subtração, tinha um valor qualquer antes), ESI = 104, EDI = undefined, AL = "d"
 
     ```asm
     mov esi,offset string1+3 
@@ -70,7 +70,7 @@
     repe cmpsb
     ```
 
-* D Resposta: ECX = 2, ESI = 103, EDI = 107, AL = undefined
+* D Resposta: ECX = 4, ESI = 101, EDI = 106, AL = undefined
 
     ```asm
     mov ecx,5 
@@ -79,7 +79,7 @@
     repne cmpsb
     ```
 
-* E Resposta: ECX = 5, ESI = undefined, EDI = 106, AL = "d"
+* E Resposta: ECX = undefined(não foi iniciado, então quando houver a subtração, tinha um valor qualquer antes), ESI = undefined, EDI = 106, AL = "d"
 
     ```asm
     lea edi,string2
